@@ -45,7 +45,7 @@ pipeline {
                     bat 'gradlew publish'
                 }
           }
-          stage('Email Notification'){
+          /*stage('Email Notification'){
               steps {
                   emaile
                          to: 'kf_zemmouri@esi.dz',
@@ -53,7 +53,7 @@ pipeline {
                          body: 'The deployment was successful. You can access the deployed application.',
                          mimeType: 'text/plain',
                }
-          }
+          }*/
 
 
 
