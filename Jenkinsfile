@@ -32,6 +32,7 @@ pipeline {
                   }
 
 
+
           stage('build') {
                 steps {
                   bat 'gradlew build'
