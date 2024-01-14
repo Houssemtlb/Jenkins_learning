@@ -35,6 +35,7 @@ publishing {
         maven(MavenPublication) {
             from components.java
         }
+
     }
 }
 
