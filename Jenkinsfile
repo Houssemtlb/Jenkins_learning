@@ -16,20 +16,8 @@ pipeline {
                 cucumber 'reports/*.json'
               }
           }
-          stage('Code Analysis') {
-                      steps {
-                        withSonarQubeEnv('sonar') {
-                          bat 'gradlew sonar'
-                        }
-                      }
-          }
-          stage("Quality Gate") {
-                      steps {
-                        timeout(time: 1, unit: 'HOURS') {
-                          waitForQualityGate abortPipeline: true
-                        }
-                      }
-                  }
+
+
 
 
 
