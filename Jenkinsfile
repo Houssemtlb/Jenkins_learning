@@ -16,11 +16,14 @@ pipeline {
                 cucumber 'reports/*json'
               }
           }
-          stage('Code Analysis') {
-                        steps {
-                          bat 'gradlew sonar'
+          stage('Code Quality & Analysis') {
+                      steps {
+                        withSonarQubeEnv('sonar') {
+                          bat(script: 'gradlew sonarqube', returnStatus: true)
                         }
-                    }
+                        waitForQualityGate true
+                      }
+          }
 
     }
 
