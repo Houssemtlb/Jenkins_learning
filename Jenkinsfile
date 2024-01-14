@@ -48,11 +48,11 @@ pipeline {
           }
           stage('Email Notification'){
               steps {
-                  emaile
-                         to: 'kf_zemmouri@esi.dz',
-                         subject: 'Deployment Successful',
-                         body: 'The deployment was successful. You can access the deployed application.',
-                         mimeType: 'text/plain',
+                emailext
+                    subject: 'Deployment Successful',
+                    body: 'The deployment was successful. You can access the deployed application.',
+                    to: 'kf_zemmouri@esi.dz'
+
                }
           }
 
