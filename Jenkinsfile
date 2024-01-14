@@ -7,7 +7,7 @@ pipeline {
               }
               post{
                 success{
-                archiveArtifacts 'target/*.json'
+                  archiveArtifacts 'target/*.json'
                 }
               }
           }
@@ -16,6 +16,11 @@ pipeline {
                 cucumber 'reports/*json'
               }
           }
+          stage('Code Analysis') {
+                        steps {
+                          bat 'gradlew sonar'
+                        }
+                    }
 
     }
 
