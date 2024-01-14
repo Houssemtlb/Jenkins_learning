@@ -38,6 +38,7 @@ pipeline {
               steps {
                 emailext subject: 'Deployment Successful',
                     body: 'The deployment was successful. You can access the deployed application.',
+                    from: 'kh_talbi@esi.dz',
                     to: 'kf_zemmouri@esi.dz'
                }
 
