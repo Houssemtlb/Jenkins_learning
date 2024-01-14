@@ -4,7 +4,11 @@ pipeline {
           stage("Tests"){
               steps{
                 bat 'gradlew test'
-              }
+              }post{
+                            success{
+                            archiveArtifacts 'target/*.json'
+                            }
+                    }
           }
 
     }
