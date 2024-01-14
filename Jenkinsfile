@@ -21,16 +21,13 @@ pipeline {
                         withSonarQubeEnv('sonar') {
                           bat 'gradlew sonarqube'
                         }
+                        timeout(time: 1, unit: 'HOURS') {
+                                                  waitForQualityGate abortPipeline: true
+                                                }
                       }
 
           }
-          stage("Quality Gate") {
-                      steps {
-                        timeout(time: 1, unit: 'HOURS') {
-                          waitForQualityGate abortPipeline: true
-                        }
-                      }
-                  }
+
           stage('build') {
                 steps {
                   bat 'gradlew build'
