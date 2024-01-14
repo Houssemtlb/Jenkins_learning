@@ -37,20 +37,15 @@ pipeline {
                     bat 'gradlew publish'
                 }
           }
-          stage('Notification') {
-              parallel{
-                stage('Email Notification'){
-                    steps {
-                        mail(subject: 'Deployment success', body: mail, cc: 'kh_talbi@esi.dz', bcc: 'kf_zemmouri@esi.dz')
-                     }
-                 }
-                 stage('others Notification'){
-                     steps{
-                         notifyEvents message: mail, token: '6veabcpemgadf_0xrfpb7gfbxozhw49j'
-                     }
-                }
-              }
-
+          stage('Email Notification'){
+              steps {
+                  mail(subject: 'Deployment success', body: mail, cc: 'kh_talbi@esi.dz', bcc: 'kf_zemmouri@esi.dz')
+               }
+          }
+          stage('others Notification'){
+               steps{
+                   notifyEvents message: mail, token: '6veabcpemgadf_0xrfpb7gfbxozhw49j'
+               }
           }
 
     }
