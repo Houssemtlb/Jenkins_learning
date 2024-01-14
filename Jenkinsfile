@@ -6,9 +6,14 @@ pipeline {
                 bat 'gradlew test'
               }
               post{
-                            success{
-                            archiveArtifacts 'target/*.json'
-                            }
+                success{
+                archiveArtifacts 'target/*.json'
+                }
+              }
+          }
+          stage('Test Reporting') {
+              steps {
+                cucumber 'reports/*json'
               }
           }
 
