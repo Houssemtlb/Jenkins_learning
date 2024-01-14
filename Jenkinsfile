@@ -51,7 +51,6 @@ pipeline {
                 emailext subject: 'Deployment Successful',
                     body: 'The deployment was successful. You can access the deployed application.',
                     to: 'kf_zemmouri@esi.dz'
-
                }
           }
 
