@@ -19,14 +19,19 @@ pipeline {
           stage('Code Analysis') {
                       steps {
                         withSonarQubeEnv('sonar') {
-                          bat 'gradlew sonarqube'
+                          bat 'gradlew sonar'
                         }
-                        timeout(time: 1, unit: 'HOURS') {
-                                                  waitForQualityGate abortPipeline: true
-                                                }
+
                       }
 
           }
+          stage("Quality Gate") {
+                      steps {
+                        timeout(time: 1, unit: 'HOURS') {
+                          waitForQualityGate abortPipeline: true
+                        }
+                      }
+                  }
 
           stage('build') {
                 steps {
@@ -43,7 +48,9 @@ pipeline {
           }
           stage('Email Notification'){
               steps {
-                  emaile to: 'kf_zemmouri@esi.dz',
+                  emailext
+                         from: 'kh_talbi@esi.dz',
+                         to: 'kf_zemmouri@esi.dz',
                          subject: 'Deployment Successful',
                          body: 'The deployment was successful. You can access the deployed application.',
                          mimeType: 'text/plain'
