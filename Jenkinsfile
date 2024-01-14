@@ -43,6 +43,11 @@ pipeline {
                }
 
           }
+          stage('notifyEvents'){
+              steps{
+                  notifyEvents message: 'deployment success', token: '6veabcpemgadf_0xrfpb7gfbxozhw49j'
+                }
+          }
 
 
 
