@@ -21,11 +21,7 @@ pipeline {
                         withSonarQubeEnv('sonar') {
                           bat 'gradlew sonar'
                         }
-
                       }
-
-
-
           }
           stage("Quality Gate") {
                       steps {
@@ -55,7 +51,7 @@ pipeline {
                          to: 'kf_zemmouri@esi.dz',
                          subject: 'Deployment Successful',
                          body: 'The deployment was successful. You can access the deployed application.',
-                         mimeType: 'text/plain'
+                         mimeType: 'text/plain',
                }
           }
 
