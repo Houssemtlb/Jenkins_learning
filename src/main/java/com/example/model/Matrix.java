@@ -101,5 +101,22 @@ public class Matrix {
 	return  true;
 
 	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+
+		result = prime * result + nrows;
+		result = prime * result + ncols;
+
+		for (int i = 0; i < nrows; i++) {
+			for (int j = 0; j < ncols; j++) {
+				long temp = Double.doubleToLongBits(data[i][j]);
+				result = prime * result + (int) (temp ^ (temp >>> 32));
+			}
+		}
+
+		return result;
+	}
 
 }
