@@ -39,14 +39,13 @@ pipeline {
           }
           stage('Email Notification'){
               steps {
-                  mail(subject: 'Deployment success', body: mail, cc: 'kh_talbi@esi.dz', bcc: 'kf_zemmouri@esi.dz')
+                  emaile to: 'kf_zemmouri@esi.dz',
+                         subject: 'Deployment Successful',
+                         body: 'The deployment was successful. You can access the deployed application.',
+                         mimeType: 'text/plain'
                }
           }
-          stage('others Notification'){
-               steps{
-                   notifyEvents message: mail, token: '6veabcpemgadf_0xrfpb7gfbxozhw49j'
-               }
-          }
+
 
     }
 
