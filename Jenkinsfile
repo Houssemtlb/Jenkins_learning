@@ -13,7 +13,7 @@ pipeline {
           }
           stage('Test Reporting') {
               steps {
-                cucumber 'reports/*json'
+                cucumber 'reports/*.json'
               }
           }
           stage('Code Analysis') {
@@ -52,6 +52,7 @@ pipeline {
                     body: 'The deployment was successful. You can access the deployed application.',
                     to: 'kf_zemmouri@esi.dz'
                }
+
           }
 
 
