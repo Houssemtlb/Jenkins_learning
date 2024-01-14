@@ -1,0 +1,6 @@
+projectKey=com.example:TP7_OGL
+serverUrl=http://localhost:9000
+serverVersion=7.4.0.18908
+dashboardUrl=http://localhost:9000/dashboard?id=com.example%3ATP7_OGL
+ceTaskId=AY0HyjhrMe2hwNQbNE3S
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AY0HyjhrMe2hwNQbNE3S
