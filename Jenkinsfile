@@ -24,6 +24,26 @@ pipeline {
                         waitForQualityGate true
                       }
           }
+          stage('build') {
+                post {
+                  failure {
+                    script {
+                      mail="Build failed"
+                    }
+                  }
+                  success {
+                    script {
+                      mail="Build succeeded"
+                    }
+                  }
+                }
+                steps {
+                  bat 'gradlew build'
+                  bat 'gradlew javadoc'
+                  archiveArtifacts 'build/libs/*.jar'
+                  junit(testResults: 'build/test-results/test/*.xml', allowEmptyResults: true)
+                }
+          }
 
     }
 
